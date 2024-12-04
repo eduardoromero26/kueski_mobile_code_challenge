@@ -4,13 +4,11 @@ import 'package:kueski_mobile_code_challenge/presentation/screens/home_screen.da
 
 void main()async  {
     await dotenv.load(fileName: "assets/env/.env.dev");
-  runApp(const MyApp());
+   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
