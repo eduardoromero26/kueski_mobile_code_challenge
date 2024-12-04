@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies_db_bloc.dart';
-import 'package:kueski_mobile_code_challenge/presentation/screens/home_screen.dart';
+import 'package:kueski_mobile_code_challenge/routes/route_generator.dart';
+import 'package:kueski_mobile_code_challenge/utils/route_screen_names.dart';
 
 void main()async  {
     await dotenv.load(fileName: "assets/env/.env.dev");
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      initialRoute: RouteScreenNames.home,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
