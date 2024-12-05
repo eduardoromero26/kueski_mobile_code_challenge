@@ -1,4 +1,10 @@
 {
     "searchForMovies": "Search for movies...",
-    "noMoviesFound": "No movies found"
+    "noMoviesFound": "No movies found",
+    "overview": "Overview",
+    "genres": "Genres",
+    "noMoviesFound": "Movies not found:",
+    "anErrorOccurred": "An error occurred, please try again later.",
+    "retry": "retry",
+    "loadingMovies": "Loading movies..."
 }

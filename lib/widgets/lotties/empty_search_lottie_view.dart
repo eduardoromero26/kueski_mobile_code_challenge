@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptySearchLottieView extends StatelessWidget {
   final String query;
@@ -15,7 +16,7 @@ class EmptySearchLottieView extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.5),
         const SizedBox(height: 40),
         Text(
-          'Movie not founded: $query',
+          '${AppLocalizations.of(context)!.noMoviesFound} $query',
         ),
       ],
     ));

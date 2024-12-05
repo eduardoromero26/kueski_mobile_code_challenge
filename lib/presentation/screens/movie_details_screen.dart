@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movie_details/movie_details_bloc.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/sliver_app_bar_movie_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   final int selectedMovieId;
@@ -62,8 +63,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         const SizedBox(height: 12),
                         const Divider(color: Colors.grey),
                         const SizedBox(height: 16),
-                        const Text(
-                          'Overview',
+                        Text(
+                          AppLocalizations.of(context)!.overview,
                         ),
                         const SizedBox(height: 8),
                         Column(
@@ -78,8 +79,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         const SizedBox(height: 12),
                         const Divider(color: Colors.grey),
                         const SizedBox(height: 16),
-                        const Text(
-                          'Genres',
+                        Text(
+                          AppLocalizations.of(context)!.genres,
                         ),
                         const SizedBox(height: 8),
                         Wrap(
