@@ -17,12 +17,12 @@ class SliverAppBarMovieDetails extends StatelessWidget {
           foregroundColor: WidgetStateProperty.all(Colors.white),
           backgroundColor: WidgetStateProperty.all(Colors.white),
         ),
-        icon: const Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () {
           Navigator.pop(context);
         },
       ),
-      expandedHeight: MediaQuery.of(context).size.height * 0.2,
+      expandedHeight: MediaQuery.of(context).size.height * 0.72,
       floating: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(

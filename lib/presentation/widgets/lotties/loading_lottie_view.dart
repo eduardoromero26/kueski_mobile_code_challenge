@@ -18,6 +18,7 @@ class LoadingLottieView extends StatelessWidget {
           Text(
             AppLocalizations.of(context)!.loadingMovies,
             textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 20),
           ),
         ],
       ),

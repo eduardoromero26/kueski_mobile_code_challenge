@@ -15,6 +15,7 @@ class EmptySearchLottieView extends StatelessWidget {
         const SizedBox(height: 40),
         Text(
           AppLocalizations.of(context)!.noMoviesFound,
+          style: const TextStyle(fontSize: 20),
         ),
       ],
     );

@@ -20,6 +20,7 @@ class ErrorLottieView extends StatelessWidget {
           Text(
             message ?? AppLocalizations.of(context)!.anErrorOccurred,
             textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
