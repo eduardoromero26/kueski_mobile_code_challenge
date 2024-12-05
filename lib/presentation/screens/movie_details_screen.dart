@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movie_details/movie_details_bloc.dart';
-import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
-import 'package:kueski_mobile_code_challenge/widgets/sliver_app_bar_movie_details.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/lotties/loading_lottie_view.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/sliver_app_bar_movie_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MovieDetailsScreen extends StatefulWidget {

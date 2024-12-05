@@ -3,7 +3,7 @@
     "noMoviesFound": "No se encontraron peliculas",
     "overview": "Descripción",
     "genres": "Generos",
-    "noMoviesFound": "No se encontraron peliculas:",
+    "noMoviesFound": "No se encontraron peliculas",
     "anErrorOccurred": "Ocurrio un error, vuelve a intentarlo",
     "retry": "reintentar",
     "loadingMovies": "Cargando peliculas..."

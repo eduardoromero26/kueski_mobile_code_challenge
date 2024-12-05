@@ -4,8 +4,8 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/localization/localization_cubit.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
-import 'package:kueski_mobile_code_challenge/widgets/movies_sliver_list.dart';
-import 'package:kueski_mobile_code_challenge/widgets/search_text_field.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/movies_sliver_list.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/search_text_field.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

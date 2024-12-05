@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/utils/route_screen_names.dart';
-import 'package:kueski_mobile_code_challenge/widgets/lotties/empty_search_lottie_view.dart';
-import 'package:kueski_mobile_code_challenge/widgets/lotties/error_lottie_view.dart';
-import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/lotties/empty_search_lottie_view.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/lotties/error_lottie_view.dart';
+import 'package:kueski_mobile_code_challenge/presentation/widgets/lotties/loading_lottie_view.dart';
 
 class MoviesSliverList extends StatelessWidget {
   final PagingController<int, Movie> pagingController;
