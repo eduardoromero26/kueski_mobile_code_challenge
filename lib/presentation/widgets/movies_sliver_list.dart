@@ -23,7 +23,7 @@ class MoviesSliverList extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 8,
           crossAxisSpacing: 8,
-          childAspectRatio: 0.54,
+          childAspectRatio: 0.5,
         ),
         addAutomaticKeepAlives: true,
         builderDelegate: PagedChildBuilderDelegate<Movie>(
@@ -101,6 +101,22 @@ class MoviesSliverList extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: ColorsTheme.black,
                               ),
+                            ),
+                            const SizedBox(height: 8),
+                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  size: 22,
+                                  color: const Color.fromARGB(255, 228, 205, 4),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '${movie.voteAverage.floor()/2}',
+                                  style: const TextStyle(fontSize: 14),
+                                ),
+                              ],
                             ),
                           ],
                         ),

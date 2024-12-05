@@ -63,7 +63,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                 ),
                                 const SizedBox(width: 8),
                                 Text(
-                                  '${selectedMovie.voteAverage} / 10',
+                                  '${selectedMovie.voteAverage.floor()/2}',
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               ],
