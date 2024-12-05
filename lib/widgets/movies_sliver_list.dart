@@ -32,21 +32,24 @@ class MoviesSliverList extends StatelessWidget {
                 subtitle: Text(
                   movies.results[index].releaseDate.toString(),
                 ),
-                leading: Hero(
-                  tag: movies.results[index].id,
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        'https://image.tmdb.org/t/p/original${movies.results[index].posterPath}',
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                leading: SizedBox(
+                  width: 40,
+                  child: Hero(
+                    tag: movies.results[index].id,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/original${movies.results[index].posterPath}',
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
                   ),
                 ),
                 trailing: const Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   Navigator.pushNamed(context, RouteScreenNames.details,
-                      arguments: movies.results[index]);
+                      arguments: movies.results[index].id);
                 },
               ),
             ),

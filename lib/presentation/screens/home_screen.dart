@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
-import 'package:kueski_mobile_code_challenge/presentation/bloc/movies_db_bloc.dart';
+import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/empty_search_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/error_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
@@ -18,8 +18,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
+    context.read<MoviesDbBloc>().add(GetPopularMovies());
     super.initState();
-    context.read<MoviesDBBloc>().add(GetPopularMovies());
+  }
+
+  @override
+  void didChangeDependencies() {
+    context.read<MoviesDbBloc>().add(GetPopularMovies());
+    super.didChangeDependencies();
   }
 
   @override
@@ -29,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           body: CustomScrollView(
         slivers: <Widget>[
           const SearchTextField(),
-          BlocBuilder<MoviesDBBloc, MoviesDBState>(
+          BlocBuilder<MoviesDbBloc, MoviesDBState>(
             builder: (context, state) {
               return state.when(initial: () {
                 return const LoadingLottieView();
@@ -42,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     : EmptySearchLottieView(
                         query: context
-                            .read<MoviesDBBloc>()
+                            .read<MoviesDbBloc>()
                             .searchFieldController
                             .text,
                       );

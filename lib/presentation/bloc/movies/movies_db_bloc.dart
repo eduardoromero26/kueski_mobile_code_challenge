@@ -8,12 +8,12 @@ part 'movies_db_bloc.freezed.dart';
 part 'movies_db_event.dart';
 part 'movies_db_state.dart';
 
-class MoviesDBBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
+class MoviesDbBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
   final TextEditingController searchFieldController =
       TextEditingController(text: '');
   final MoviesRepository moviesRepository = MoviesRepository();
 
-  MoviesDBBloc() : super(MoviesDBState.initial()) {
+  MoviesDbBloc() : super(MoviesDBState.initial()) {
 
     on<GetPopularMovies>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
