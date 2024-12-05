@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                 ],
                 theme: ThemeData(
                   colorScheme: ColorScheme.fromSeed(
-                      seedColor: ColorsTheme.deepBlue, primary: ColorsTheme.deepBlue),
+                      seedColor: ColorsTheme.black, primary: ColorsTheme.deepBlue, ),
                   useMaterial3: true,
                 ),
                 initialRoute: RouteScreenNames.home,

@@ -6,6 +6,7 @@ import 'package:kueski_mobile_code_challenge/presentation/bloc/localization/loca
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/widgets/movies_sliver_list.dart';
 import 'package:kueski_mobile_code_challenge/presentation/widgets/search_text_field.dart';
+import 'package:kueski_mobile_code_challenge/theme/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,22 +46,38 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: ColorsTheme.white,
         appBar: AppBar(
-          title: Text('Movies App'),
+          backgroundColor: ColorsTheme.white,
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              child: IconButton(
+                icon: const Icon(Icons.account_circle_outlined),
+                onPressed: () {},
+              ),
+            ),
+          ),
           actions: [
+           
             IconButton(
               icon: Icon(Icons.language_outlined),
               onPressed: () {
                 context.read<LocalizationCubit>().changeLocale(
-                    context.read<LocalizationCubit>().state == const Locale('en')
+                    context.read<LocalizationCubit>().state ==
+                            const Locale('en')
                         ? const Locale('es')
                         : const Locale('en'));
                 _pagingController.refresh();
               },
             ),
+             IconButton(
+              icon: Icon(Icons.sunny),
+              onPressed: () {
+              },
+            ),
           ],
         ),
-
         body: CustomScrollView(
           slivers: <Widget>[
             SearchTextField(

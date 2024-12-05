@@ -15,7 +15,7 @@ class SliverAppBarMovieDetails extends StatelessWidget {
       leading: IconButton(
         style: ButtonStyle(
           foregroundColor: WidgetStateProperty.all(Colors.white),
-          backgroundColor: WidgetStateProperty.all(primaryColor),
+          backgroundColor: WidgetStateProperty.all(Colors.white),
         ),
         icon: const Icon(Icons.arrow_back),
         onPressed: () {

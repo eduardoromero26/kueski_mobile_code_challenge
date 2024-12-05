@@ -17,7 +17,7 @@ class SearchTextField extends StatelessWidget {
     return SliverPinnedHeader(
         child: Container(
       color: Colors.white,
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(12.0),
       child: BlocBuilder<MoviesDbBloc, MoviesDBState>(
         builder: (context, state) {
           return TextField(
