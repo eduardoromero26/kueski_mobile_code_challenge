@@ -14,6 +14,7 @@ class MoviesDBBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
   final MoviesRepository moviesRepository = MoviesRepository();
 
   MoviesDBBloc() : super(MoviesDBState.initial()) {
+
     on<GetPopularMovies>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
       try {
@@ -26,6 +27,12 @@ class MoviesDBBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
     });
     on<SearchMoviesByName>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
+      try {
+        final movies = await moviesRepository.searchMoviesByName(event.pageNumber, event.searchQuery);
+        emit(MoviesDBState.loadedSuccess(movies));
+      } catch (e) {
+        emit(MoviesDBState.loadedFailed(e.toString()));
+      }
       try {} catch (e) {
         emit(MoviesDBState.loadedFailed(e.toString()));
       }

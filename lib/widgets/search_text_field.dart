@@ -8,7 +8,7 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final moviesDBBloc = context.read<MoviesDBBloc>();
+    final moviesDBBloc = context.read<MoviesDBBloc>();
     return SliverPinnedHeader(
         child: Container(
       color: Colors.white,
@@ -22,10 +22,7 @@ class SearchTextField extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               hintText: 'Search for movies...',
               prefixIcon: const Icon(Icons.search),
-              suffixIcon: moviesDBBloc
-                      .searchFieldController
-                      .text
-                      .isNotEmpty
+              suffixIcon: moviesDBBloc.searchFieldController.text.isNotEmpty
                   ? IconButton(
                       icon: const Icon(Icons.clear),
                       onPressed: () {
@@ -33,18 +30,21 @@ class SearchTextField extends StatelessWidget {
                             .read<MoviesDBBloc>()
                             .searchFieldController
                             .text = '';
-                        moviesDBBloc.add(SearchMoviesByName(
-                            query: moviesDBBloc
-                                .searchFieldController
-                                .text));
+                        moviesDBBloc.add(GetPopularMovies());
                       },
                     )
                   : null,
             ),
+            onChanged: (value) {
+              if (value.length >= 3) {
+                context.read<MoviesDBBloc>().add((SearchMoviesByName(
+                    searchQuery: moviesDBBloc.searchFieldController.text)));
+              }
+            },
             onSubmitted: (value) {
               context
                   .read<MoviesDBBloc>()
-                  .add(SearchMoviesByName(query: value));
+                  .add(SearchMoviesByName(searchQuery: value));
             },
           );
         },

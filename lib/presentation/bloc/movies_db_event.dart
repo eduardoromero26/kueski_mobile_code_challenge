@@ -8,8 +8,9 @@ class GetPopularMovies extends MoviesDBEvent {
 }
 
 class SearchMoviesByName extends MoviesDBEvent {
-  final String? query;
-  SearchMoviesByName({this.query});
+  final String searchQuery;
+  final int pageNumber;
+  SearchMoviesByName({this.searchQuery = '', this.pageNumber = 1});
 }
 
 class ResetSearchControllerEvent extends MoviesDBEvent {}

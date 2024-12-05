@@ -345,10 +345,10 @@ class __$$LoadedSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? movies = freezed,
+    Object? movies = null,
   }) {
     return _then(_$LoadedSuccessImpl(
-      freezed == movies
+      null == movies
           ? _value.movies
           : movies // ignore: cast_nullable_to_non_nullable
               as MovieResponse,
@@ -374,12 +374,11 @@ class _$LoadedSuccessImpl implements _LoadedSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedSuccessImpl &&
-            const DeepCollectionEquality().equals(other.movies, movies));
+            (identical(other.movies, movies) || other.movies == movies));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(movies));
+  int get hashCode => Object.hash(runtimeType, movies);
 
   /// Create a copy of MoviesDBState
   /// with the given fields replaced by the non-null parameter values.
