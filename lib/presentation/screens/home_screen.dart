@@ -21,7 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _pagingController.addPageRequestListener((pageKey) {
-      context.read<MoviesDbBloc>().add(GetPopularMovies(pageNumber: pageKey));
+      String searchFieldController =
+          context.read<MoviesDbBloc>().searchFieldController.text;
+      searchFieldController == ''
+          ? context
+              .read<MoviesDbBloc>()
+              .add(GetPopularMovies(pageNumber: pageKey))
+          : context.read<MoviesDbBloc>().add(SearchMoviesByName(
+              pageNumber: pageKey,
+              searchQuery:
+                  context.read<MoviesDbBloc>().searchFieldController.text));
     });
   }
 
@@ -32,18 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _pagingController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
-            const SearchTextField(),
+            SearchTextField(
+              pagingController: _pagingController,
+            ),
             BlocConsumer<MoviesDbBloc, MoviesDBState>(
               listener: (context, state) {
                 state.maybeWhen(
@@ -59,8 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   loadedFailed: (message) {
                     _pagingController.error = message;
                   },
-                  orElse: () {
-                  },
+                  orElse: () {},
                 );
               },
               builder: (context, state) {

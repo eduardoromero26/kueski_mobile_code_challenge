@@ -10,6 +10,14 @@ class MoviesRepository {
         await DioApiRepository().getFromApi(endpoint, queryParams: queryParams);
     if (response is Response) {
       final Map<String, dynamic> data = response.data;
+      if (data['results'] == []) {
+       return MovieResponse(
+          page: 0,
+          results: [],
+          totalPages: 0,
+          totalResults: 0,
+        );
+      }
       return MovieResponse.fromJson(data);
     } else {
       throw Exception('Failed to load movies');

@@ -32,14 +32,16 @@ class MoviesSliverList extends StatelessWidget {
               child: Text('No movies found'),
             );
           },
-          firstPageProgressIndicatorBuilder:(context) => Center(child: LoadingLottieView()),
+          firstPageProgressIndicatorBuilder: (context) =>
+              Center(child: LoadingLottieView()),
           itemBuilder: (context, movie, index) {
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.grey[200],
               ),
-              margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+              margin:
+                  const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: ListTile(
@@ -51,9 +53,12 @@ class MoviesSliverList extends StatelessWidget {
                     child: Hero(
                       tag: movie.id,
                       child: CachedNetworkImage(
-                        imageUrl: 'https://image.tmdb.org/t/p/original${movie.posterPath}',
-                        placeholder: (context, url) => const CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
+                        imageUrl:
+                            'https://image.tmdb.org/t/p/original${movie.posterPath}',
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),

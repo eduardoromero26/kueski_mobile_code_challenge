@@ -12,8 +12,8 @@ class MoviesDbBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
   final TextEditingController searchFieldController =
       TextEditingController(text: '');
 
-  MoviesDbBloc({required MoviesRepository moviesRepository}) : super(MoviesDBState.initial()) {
-
+  MoviesDbBloc({required MoviesRepository moviesRepository})
+      : super(MoviesDBState.initial()) {
     on<GetPopularMovies>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
       try {
@@ -27,7 +27,8 @@ class MoviesDbBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
     on<SearchMoviesByName>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
       try {
-        final movies = await moviesRepository.searchMoviesByName(event.pageNumber, event.searchQuery);
+        final movies = await moviesRepository.searchMoviesByName(
+            event.pageNumber, event.searchQuery);
         emit(MoviesDBState.loadedSuccess(movies));
       } catch (e) {
         emit(MoviesDBState.loadedFailed(e.toString()));
@@ -36,8 +37,8 @@ class MoviesDbBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
         emit(MoviesDBState.loadedFailed(e.toString()));
       }
     });
-    on<ResetSearchControllerEvent>((event, emit) {
-      searchFieldController.text = '';
+    on<ResetSearchMovies>((event, emit) {
+      searchFieldController.clear();
     });
   }
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class SearchTextField extends StatelessWidget {
-  const SearchTextField({super.key});
+  final PagingController<int, Movie> pagingController;
+
+  const SearchTextField({super.key, required this.pagingController});
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +33,21 @@ class SearchTextField extends StatelessWidget {
                         context
                             .read<MoviesDbBloc>()
                             .searchFieldController
-                            .text = '';
-                        moviesDbBloc.add(GetPopularMovies());
+                            .clear();
+                        moviesDbBloc.add(ResetSearchMovies());
+                        pagingController.refresh();
                       },
                     )
                   : null,
             ),
             onChanged: (value) {
-              if (value.length >= 3) {
-                context.read<MoviesDbBloc>().add((SearchMoviesByName(
-                    searchQuery: moviesDbBloc.searchFieldController.text)));
+              if (value.length >= 3 &&
+                  value == moviesDbBloc.searchFieldController.text) {
+                pagingController.refresh();
               }
             },
             onSubmitted: (value) {
-              context
-                  .read<MoviesDbBloc>()
-                  .add(SearchMoviesByName(searchQuery: value));
+              pagingController.refresh();
             },
           );
         },
