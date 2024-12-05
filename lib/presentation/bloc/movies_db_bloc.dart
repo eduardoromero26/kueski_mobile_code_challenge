@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,14 +9,16 @@ part 'movies_db_event.dart';
 part 'movies_db_state.dart';
 
 class MoviesDBBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
-  final TextEditingController searchFieldController = TextEditingController(text: '');
+  final TextEditingController searchFieldController =
+      TextEditingController(text: '');
   final MoviesRepository moviesRepository = MoviesRepository();
 
   MoviesDBBloc() : super(MoviesDBState.initial()) {
     on<GetPopularMovies>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
       try {
-        final movies = await moviesRepository.getPopularMovies(event.pageNumber);
+        final movies =
+            await moviesRepository.getPopularMovies(event.pageNumber);
         emit(MoviesDBState.loadedSuccess(movies));
       } catch (e) {
         emit(MoviesDBState.loadedFailed(e.toString()));
@@ -25,8 +26,7 @@ class MoviesDBBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
     });
     on<SearchMoviesByName>((event, emit) async {
       emit(MoviesDBState.loadingStarted());
-      try {
-      } catch (e) {
+      try {} catch (e) {
         emit(MoviesDBState.loadedFailed(e.toString()));
       }
     });

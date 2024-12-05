@@ -7,7 +7,8 @@
         {
             "name": "kueski_mobile_code_challenge",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug"
         },
         {
             "name": "kueski_mobile_code_challenge (profile mode)",

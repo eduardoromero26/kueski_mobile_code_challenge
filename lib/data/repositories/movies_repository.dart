@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:kueski_mobile_code_challenge/data/repositories/dio_api_repository.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 
@@ -13,6 +14,11 @@ class MoviesRepository {
         'sort_by': 'popularity.desc',
       },
     );
-    return MovieResponse.fromJson(response);
+    if (response is Response) {
+      final Map<String, dynamic> data = response.data;
+      return MovieResponse.fromJson(data);
+    } else {
+      throw Exception('Failed to load movies');
+    }
   }
 }
