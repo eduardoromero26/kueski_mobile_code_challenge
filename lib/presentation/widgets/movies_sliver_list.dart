@@ -24,7 +24,7 @@ class MoviesSliverList extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 8,
           crossAxisSpacing: 8,
-          childAspectRatio: 0.5,
+          childAspectRatio: 0.4,
         ),
         addAutomaticKeepAlives: true,
         builderDelegate: PagedChildBuilderDelegate<Movie>(

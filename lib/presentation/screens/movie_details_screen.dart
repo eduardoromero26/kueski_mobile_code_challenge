@@ -126,6 +126,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ],
                         ),
                         const SizedBox(height: 16),
+                        if (selectedMovie.backdropPath != null)
                         CachedNetworkImage(imageUrl: 'https://image.tmdb.org/t/p/original${selectedMovie.backdropPath}', fit: BoxFit.cover),
                       ],
                     ),

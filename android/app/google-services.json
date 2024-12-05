@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "660338574656",
+    "project_id": "movies-efb85",
+    "storage_bucket": "movies-efb85.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660338574656:android:1871a2be221a9e2fb5a6a5",
+        "android_client_info": {
+          "package_name": "com.example.kueski_mobile_code_challenge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_88tjvK55dbdbNpuf580ulSrECwBvk20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

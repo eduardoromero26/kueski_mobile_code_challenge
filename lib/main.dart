@@ -10,9 +10,14 @@ import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_
 import 'package:kueski_mobile_code_challenge/presentation/bloc/theme/theme_cubit.dart';
 import 'package:kueski_mobile_code_challenge/routes/route_generator.dart';
 import 'package:kueski_mobile_code_challenge/utils/route_screen_names.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   await dotenv.load(fileName: "assets/env/.env.dev");
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(
     MultiBlocProvider(
       providers: [
