@@ -4,6 +4,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/localization/localization_cubit.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
+import 'package:kueski_mobile_code_challenge/presentation/bloc/theme/theme_cubit.dart';
 import 'package:kueski_mobile_code_challenge/presentation/widgets/movies_sliver_list.dart';
 import 'package:kueski_mobile_code_challenge/presentation/widgets/search_text_field.dart';
 import 'package:kueski_mobile_code_challenge/theme/colors.dart';
@@ -44,11 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLightTheme = context.watch<ThemeCubit>().state;
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorsTheme.white,
+        backgroundColor: ColorsTheme.getBackgroundColor(isLightTheme),
         appBar: AppBar(
-          backgroundColor: ColorsTheme.white,
+        backgroundColor: ColorsTheme.getBackgroundColor(isLightTheme),
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
@@ -59,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           actions: [
-           
             IconButton(
               icon: Icon(Icons.language_outlined),
               onPressed: () {
@@ -71,9 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 _pagingController.refresh();
               },
             ),
-             IconButton(
+            IconButton(
               icon: Icon(Icons.sunny),
               onPressed: () {
+                context.read<ThemeCubit>().toggleTheme();
               },
             ),
           ],
@@ -82,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
           slivers: <Widget>[
             SearchTextField(
               pagingController: _pagingController,
+              isLightTheme: isLightTheme,
             ),
             BlocConsumer<MoviesDbBloc, MoviesDBState>(
               listener: (context, state) {

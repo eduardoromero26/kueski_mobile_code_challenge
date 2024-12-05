@@ -4,19 +4,22 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
+import 'package:kueski_mobile_code_challenge/theme/colors.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class SearchTextField extends StatelessWidget {
   final PagingController<int, Movie> pagingController;
+  final bool isLightTheme;
 
-  const SearchTextField({super.key, required this.pagingController});
+  const SearchTextField(
+      {super.key, required this.pagingController, this.isLightTheme = true});
 
   @override
   Widget build(BuildContext context) {
     final moviesDbBloc = context.read<MoviesDbBloc>();
     return SliverPinnedHeader(
         child: Container(
-      color: Colors.white,
+      color: ColorsTheme.getBackgroundColor(isLightTheme),
       padding: const EdgeInsets.all(12.0),
       child: BlocBuilder<MoviesDbBloc, MoviesDBState>(
         builder: (context, state) {

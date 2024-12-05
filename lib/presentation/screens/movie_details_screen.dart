@@ -75,7 +75,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                 Icon(
                                   Icons.calendar_month,
                                   size: 20,
-                                  color: ColorsTheme.black,
                                 ),
                                 const SizedBox(width: 8),
                                 Text(selectedMovie.releaseDate.toString().replaceAll('-', '/'),

@@ -10,8 +10,9 @@ import 'package:kueski_mobile_code_challenge/presentation/widgets/lotties/loadin
 
 class MoviesSliverList extends StatelessWidget {
   final PagingController<int, Movie> pagingController;
+  final bool isLightTheme;
 
-  const MoviesSliverList({super.key, required this.pagingController});
+  const MoviesSliverList({super.key, required this.pagingController, this.isLightTheme = true});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class MoviesSliverList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: ColorsTheme.black.withOpacity(0.16),
+                    color: isLightTheme ? ColorsTheme.black.withOpacity(0.16) : ColorsTheme.white.withOpacity(0.2),
                     spreadRadius: 0,
                     blurRadius: 12,
                     offset: const Offset(0, 3),
@@ -53,12 +54,11 @@ class MoviesSliverList extends StatelessWidget {
                 ],
               ),
               child: Card(
-                color: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 elevation: 1,
-                shadowColor: Colors.white70,
+                shadowColor: isLightTheme ? ColorsTheme.black.withOpacity(0.16) : ColorsTheme.white.withOpacity(0.4),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {
@@ -99,7 +99,6 @@ class MoviesSliverList extends StatelessWidget {
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: ColorsTheme.black,
                               ),
                             ),
                             const SizedBox(height: 8),

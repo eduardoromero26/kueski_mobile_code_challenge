@@ -7,8 +7,8 @@ import 'package:kueski_mobile_code_challenge/data/repositories/movies_repository
 import 'package:kueski_mobile_code_challenge/presentation/bloc/localization/localization_cubit.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movie_details/movie_details_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
+import 'package:kueski_mobile_code_challenge/presentation/bloc/theme/theme_cubit.dart';
 import 'package:kueski_mobile_code_challenge/routes/route_generator.dart';
-import 'package:kueski_mobile_code_challenge/theme/colors.dart';
 import 'package:kueski_mobile_code_challenge/utils/route_screen_names.dart';
 
 void main() async {
@@ -17,6 +17,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LocalizationCubit()),
+        BlocProvider(create: (context) => ThemeCubit()),
         BlocProvider<MoviesDbBloc>(
           create: (context) =>
               MoviesDbBloc(moviesRepository: MoviesRepository()),
@@ -34,12 +35,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => LocalizationCubit(),
       child: BlocBuilder<LocalizationCubit, Locale>(
         builder: (context, locale) {
-          return MaterialApp(
+          return BlocBuilder<ThemeCubit, bool>(
+            builder: (context, state) {
+              return MaterialApp(
                 title: 'Movies App',
                 debugShowCheckedModeBanner: false,
                 locale: locale,
@@ -50,14 +52,12 @@ class MyApp extends StatelessWidget {
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                theme: ThemeData(
-                  colorScheme: ColorScheme.fromSeed(
-                      seedColor: ColorsTheme.black, primary: ColorsTheme.deepBlue, ),
-                  useMaterial3: true,
-                ),
+                theme: state ? ThemeData.light() : ThemeData.dark(),
                 initialRoute: RouteScreenNames.home,
                 onGenerateRoute: RouteGenerator.generateRoute,
               );
+            },
+          );
         },
       ),
     );
