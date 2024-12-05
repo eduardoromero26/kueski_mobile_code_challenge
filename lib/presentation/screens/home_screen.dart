@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
+import 'package:kueski_mobile_code_challenge/presentation/bloc/localization/localization_cubit.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
 import 'package:kueski_mobile_code_challenge/widgets/movies_sliver_list.dart';
 import 'package:kueski_mobile_code_challenge/widgets/search_text_field.dart';
@@ -44,6 +45,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('Movies App'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.language_outlined),
+              onPressed: () {
+                context.read<LocalizationCubit>().changeLocale(
+                    context.read<LocalizationCubit>().state == const Locale('en')
+                        ? const Locale('es')
+                        : const Locale('en'));
+                _pagingController.refresh();
+              },
+            ),
+          ],
+        ),
+
         body: CustomScrollView(
           slivers: <Widget>[
             SearchTextField(

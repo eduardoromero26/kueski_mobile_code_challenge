@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
@@ -24,7 +25,7 @@ class SearchTextField extends StatelessWidget {
             decoration: InputDecoration(
               border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              hintText: 'Search for movies...',
+              hintText: (AppLocalizations.of(context)!.searchForMovies),
               prefixIcon: const Icon(Icons.search),
               suffixIcon: moviesDbBloc.searchFieldController.text.isNotEmpty
                   ? IconButton(

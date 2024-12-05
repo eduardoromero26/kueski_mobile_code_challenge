@@ -7,6 +7,8 @@ class MovieDetailsRepository {
   Future<MovieDetails> getMovieDetails(int movieId) async {
     final response = await DioApiRepository().getFromApi(
       '${Endpoints.movieDetails}/$movieId',
+      1,
+      
     );
     if (response is Response) {
       final Map<String, dynamic> data = response.data;
