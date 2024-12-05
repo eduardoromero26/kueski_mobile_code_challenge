@@ -7,15 +7,20 @@ class LoadingLottieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Lottie.asset('assets/lotties/progress_lottie.json',
-            width: MediaQuery.of(context).size.width * 0.5),
-        Text(
-          AppLocalizations.of(context)!.loadingMovies,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Lottie.asset('assets/lotties/progress_lottie.json',
+              width: MediaQuery.of(context).size.width * 0.36),
+          const SizedBox(height: 40),
+          Text(
+            AppLocalizations.of(context)!.loadingMovies,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }

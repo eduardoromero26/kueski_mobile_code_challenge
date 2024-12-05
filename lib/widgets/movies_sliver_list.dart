@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kueski_mobile_code_challenge/domain/models/movie_model.dart';
 import 'package:kueski_mobile_code_challenge/utils/route_screen_names.dart';
+import 'package:kueski_mobile_code_challenge/widgets/lotties/empty_search_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/error_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
 
 class MoviesSliverList extends StatelessWidget {
   final PagingController<int, Movie> pagingController;
+
 
   const MoviesSliverList({super.key, required this.pagingController});
 
@@ -29,9 +30,7 @@ class MoviesSliverList extends StatelessWidget {
             );
           },
           noItemsFoundIndicatorBuilder: (context) {
-            return  Center(
-              child: Text(AppLocalizations.of(context)!.noMoviesFound),
-            );
+            return Center(child: EmptySearchLottieView());
           },
           firstPageProgressIndicatorBuilder: (context) =>
               Center(child: LoadingLottieView()),
@@ -48,7 +47,7 @@ class MoviesSliverList extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.only(left: 8.0, right: 16.0),
                   title: Text(movie.title),
-                  subtitle: Text(movie.releaseDate ?? ''),
+                  subtitle: Text(movie.releaseDate),
                   leading: SizedBox(
                     width: 40,
                     child: Hero(
