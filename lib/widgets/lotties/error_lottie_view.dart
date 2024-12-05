@@ -8,28 +8,27 @@ class ErrorLottieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverFillRemaining(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Lottie.asset('assets/lotties/error_lottie.json',
-              width: MediaQuery.of(context).size.width * 0.36),
-          const SizedBox(height: 40),
-          Text(
-            message ?? 'An error occurred, please try again later.',
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: onRetry,
-            child: const Text(
-              'Try again',
-            ),
-          ),
-        ],
+    return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Lottie.asset('assets/lotties/error_lottie.json',
+          width: MediaQuery.of(context).size.width * 0.36),
+      const SizedBox(height: 40),
+      Text(
+        message ?? 'An error occurred, please try again later.',
+        textAlign: TextAlign.center,
       ),
-    ));
+      const SizedBox(height: 20),
+      ElevatedButton(
+        onPressed: onRetry,
+        child: const Text(
+          'Try again',
+        ),
+      ),
+    ],
+          ),
+        );
   }
 }

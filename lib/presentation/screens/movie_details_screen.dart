@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movie_details/movie_details_bloc.dart';
+import 'package:kueski_mobile_code_challenge/widgets/lotties/loading_lottie_view.dart';
 import 'package:kueski_mobile_code_challenge/widgets/sliver_app_bar_movie_details.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
@@ -14,18 +15,11 @@ class MovieDetailsScreen extends StatefulWidget {
 class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   @override
   void initState() {
-    context.read<MovieDetailsBloc>().add(GetMovieDetailsById(
-          widget.selectedMovieId,
-        ));
     super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    context.read<MovieDetailsBloc>().add(GetMovieDetailsById(
-          widget.selectedMovieId,
-        ));
-    super.didChangeDependencies();
+    context.read<MovieDetailsBloc>().add(ResetMovieDetails());
+    context
+        .read<MovieDetailsBloc>()
+        .add(GetMovieDetailsById(widget.selectedMovieId));
   }
 
   @override
@@ -35,14 +29,10 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         builder: (context, state) {
           return state.when(
             initial: () {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return SizedBox.shrink();
             },
             loadingStarted: () {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return Center(child: LoadingLottieView());
             },
             loadedSuccess: (selectedMovie) {
               return CustomScrollView(

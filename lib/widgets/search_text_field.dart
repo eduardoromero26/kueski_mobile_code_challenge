@@ -16,13 +16,13 @@ class SearchTextField extends StatelessWidget {
       child: BlocBuilder<MoviesDbBloc, MoviesDBState>(
         builder: (context, state) {
           return TextField(
-            controller: MoviesDbBloc().searchFieldController,
+            controller: moviesDbBloc.searchFieldController,
             decoration: InputDecoration(
               border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               hintText: 'Search for movies...',
               prefixIcon: const Icon(Icons.search),
-              suffixIcon: MoviesDbBloc().searchFieldController.text.isNotEmpty
+              suffixIcon: moviesDbBloc.searchFieldController.text.isNotEmpty
                   ? IconButton(
                       icon: const Icon(Icons.clear),
                       onPressed: () {
@@ -30,7 +30,7 @@ class SearchTextField extends StatelessWidget {
                             .read<MoviesDbBloc>()
                             .searchFieldController
                             .text = '';
-                        MoviesDbBloc().add(GetPopularMovies());
+                        moviesDbBloc.add(GetPopularMovies());
                       },
                     )
                   : null,
@@ -38,7 +38,7 @@ class SearchTextField extends StatelessWidget {
             onChanged: (value) {
               if (value.length >= 3) {
                 context.read<MoviesDbBloc>().add((SearchMoviesByName(
-                    searchQuery: MoviesDbBloc().searchFieldController.text)));
+                    searchQuery: moviesDbBloc.searchFieldController.text)));
               }
             },
             onSubmitted: (value) {

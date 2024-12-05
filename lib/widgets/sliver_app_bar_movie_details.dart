@@ -22,7 +22,7 @@ class SliverAppBarMovieDetails extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      expandedHeight: MediaQuery.of(context).size.height * 0.6,
+      expandedHeight: MediaQuery.of(context).size.height * 0.2,
       floating: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:kueski_mobile_code_challenge/data/repositories/movies_repository.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movie_details/movie_details_bloc.dart';
 import 'package:kueski_mobile_code_challenge/presentation/bloc/movies/movies_db_bloc.dart';
 import 'package:kueski_mobile_code_challenge/routes/route_generator.dart';
@@ -13,7 +14,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider<MoviesDbBloc>(
-          create: (context) => MoviesDbBloc(),
+        create: (context) => MoviesDbBloc(moviesRepository: MoviesRepository()),
         ),
         BlocProvider<MovieDetailsBloc>(
           create: (context) => MovieDetailsBloc(),
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movies App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: ColorsTheme.deepBlue, primary: ColorsTheme.deepBlue),

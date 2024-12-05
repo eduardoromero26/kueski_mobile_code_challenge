@@ -11,9 +11,8 @@ part 'movies_db_state.dart';
 class MoviesDbBloc extends Bloc<MoviesDBEvent, MoviesDBState> {
   final TextEditingController searchFieldController =
       TextEditingController(text: '');
-  final MoviesRepository moviesRepository = MoviesRepository();
 
-  MoviesDbBloc() : super(MoviesDBState.initial()) {
+  MoviesDbBloc({required MoviesRepository moviesRepository}) : super(MoviesDBState.initial()) {
 
     on<GetPopularMovies>((event, emit) async {
       emit(MoviesDBState.loadingStarted());

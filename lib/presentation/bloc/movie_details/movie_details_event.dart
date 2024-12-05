@@ -15,3 +15,5 @@ class GetMovieDetailsById extends MovieDetailsEvent {
   @override
   List<Object?> get props => [movieId];
 }
+
+class ResetMovieDetails extends MovieDetailsEvent {}

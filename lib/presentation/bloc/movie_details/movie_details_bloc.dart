@@ -9,17 +9,22 @@ part 'movie_details_event.dart';
 part 'movie_details_bloc.freezed.dart';
 
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
-  final MovieDetailsRepository movieDetailsRepository = MovieDetailsRepository();
+  final MovieDetailsRepository movieDetailsRepository =
+      MovieDetailsRepository();
 
   MovieDetailsBloc() : super(MovieDetailsState.initial()) {
     on<GetMovieDetailsById>((event, emit) async {
       emit(MovieDetailsState.loadingStarted());
       try {
-        final movieDetails = await movieDetailsRepository.getMovieDetails(event.movieId);
+        final movieDetails =
+            await movieDetailsRepository.getMovieDetails(event.movieId);
         emit(MovieDetailsState.loadedSuccess(movieDetails));
       } catch (e) {
         emit(MovieDetailsState.loadedFailed(e.toString()));
       }
+    });
+    on<ResetMovieDetails>((event, emit) {
+      emit(MovieDetailsState.initial());
     });
   }
 }
