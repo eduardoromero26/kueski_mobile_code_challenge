@@ -18,7 +18,6 @@ This application is designed to demonstrate the use of various Flutter libraries
 - **dio**: For making HTTP requests.
 - **cached_network_image**: For loading and caching network images.
 - **lottie**: For displaying animations.
-- **firebase_core**: For integrating Firebase into the application.
 - **flutter_dotenv**: For loading environment variables from a `.env` file.
 
 ### How to Run the Project
